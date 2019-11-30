@@ -9,7 +9,7 @@ class bcolors:
 	RED = '\033[91m'
 
 def banner():
-	print(bcolors.RED + "+[+[+[ Ph03n1x v1.0 ]+]+]+"),
+	print(bcolors.RED + "+[+[+[ Ph30n1x v1.0 ]+]+]+"),
 	print(bcolors.GREEN + '''
  __       ___   ___
 [  ] [       ] [   ]      /|
