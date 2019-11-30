@@ -9,13 +9,13 @@ class bcolors:
 	RED = '\033[91m'
 
 def banner():
-	print(bcolors.RED + "+[+[+[ Ph30n1x v1.0 ]+]+]+"),
+	print(bcolors.RED + "+[+[+[ Ph0enix v1.0 ]+]+]+"),
 	print(bcolors.GREEN + '''
- __       ___   ___
-[  ] [       ] [   ]      /|
-[__] [__   __] [   ] ,__   |  \ /
-[    [  ]    ] [   ] [  ]  |   :
-[    [  ] ___] [___] [  ) _|_ / \   ''')
+ ____  _     ____  _____ _      _ ___  _
+/  __\/ \ /|/  _ \/  __// \  /|/ \\  \//
+|  \/|| |_||| / \||  \  | |\ ||| | \  / 
+|  __/| | ||| \_/||  /_ | | \||| | /  \ 
+\_/   \_/ \|\____/\____\\_/  \|\_//__/\\ ''')
 
 def getUserURLS(username):
     urlsfile=open("urls.txt","r")
@@ -29,7 +29,7 @@ def getUserURLS(username):
 
 def search(username,sites):
 	print('+[+[+[ Searching for username: '+username+' ]+]+]+')
-	print('+[+[+[ Ph30n1x v1 is working... ]+]+]+\n')
+	print('+[+[+[ Ph0enix v1 is working... ]+]+]+\n')
 	count = 0
 	for w,u in sites.items():
 		r = requests.get(u)
