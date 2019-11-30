@@ -13,7 +13,7 @@ For every url inside the file, the tool will find for username matches.
 ```
 git clone https://github.com/Bl1xY/Ph30n1x.git
 cd Ph30n1x
-python ph30n1x.py username
+python ph30n1x.py <username> <textfile>
 ```
 
 # Adding URL's
