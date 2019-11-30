@@ -1,4 +1,4 @@
-# Ph0en1x
+# Phe0nix
 
 A search tool for finding usernames across a variety of sites.
 
@@ -11,9 +11,9 @@ For every url inside the file, the tool will find for username matches.
 # Usage
 
 ```
-git clone https://github.com/Bl1xY/Ph0en1x.git
-cd Ph0en1x
-python ph0en1x.py <username>
+git clone https://github.com/Bl1xY/Phe0nix.git
+cd Phe0nix
+python phe0nix.py <username>
 ```
 
 # Adding URL's
@@ -29,16 +29,16 @@ Be sure to put "[USER]" inside the url to make the tool work properly.
 # Example
 
 ```
-python ph0enix.py test1239
+python phe0nix.py test1239
 
-+[+[+[ Ph0enix v1.0 ]+]+]+
++[+[+[ Phe0nix v1.0 ]+]+]+
  ____  _     ____  _____ _      _ ___  _
 /  __\/ \ /|/  _ \/  __// \  /|/ \  \//
 |  \/|| |_||| / \||  \  | |\ ||| | \  /
 |  __/| | ||| \_/||  /_ | | \||| | /  \
 \_/   \_/ \|\____/\____\_/  \|\_//__/\
 +[+[+[ Searching for username: test1239 ]+]+]+
-+[+[+[ Ph0enix v1 is working... ]+]+]+
++[+[+[ Phe0nix v1 is working... ]+]+]+
 
 MATCH: test1239 in ifttt:https://www.ifttt.com/p/test1239
 MATCH: test1239 in tripadvisor:https://tripadvisor.com/members/test1239
