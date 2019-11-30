@@ -29,7 +29,7 @@ Be sure to put "[USER]" inside the url to make the tool work properly.
 # Example
 
 ```
-python ph30n1x.py qwerty12399
+python ph30n1x.py example456
 
 +[+[+[ Ph03n1x v1.0 ]+]+]+
  __       ___   ___
