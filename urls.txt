@@ -1,5 +1,5 @@
 instagram:https://www.instagram.com/[USER]
-facebook:https://www.twitter.com/[USER]
+facebook:https://www.facebook.com/[USER]
 twitter:https://www.twitter.com/[USER]
 youtube:https://www.youtube.com/[USER]
 tumblr:https://[USER].tumblr.com
