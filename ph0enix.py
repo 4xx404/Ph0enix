@@ -19,7 +19,7 @@ def banner():
 
 def getUserURLS(username):
     urlsfile=open("urls.txt","r")
-    content=urlsfile.read().split("\n")
+    content=urlsfile.read().split("\n")[0:-1]
     sites={}
     for line in content:
         website=line.split(':',1)[0]
