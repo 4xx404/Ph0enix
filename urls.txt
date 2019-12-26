@@ -6,7 +6,6 @@ tumblr:https://[USER].tumblr.com
 blogspot:https://[USER].blogspot.com
 google_plus:https://plus.google.com/s/[USER]/top
 reddit:https://www.reddit.com/user/[USER]
-wordpress:https://[USER].wordpress.com
 pinterest:https://www.pinterest.com/[USER]
 github:https://github.com/[USER]
 flickr:https://www.flickr.com/people/[USER]
@@ -18,7 +17,6 @@ deviantart:https://[USER].deviantart.com
 vk:https://vk.com/[USER]
 aboutme:https://about.me/[USER]
 imgur:https://imgur.com/user/[USER]
-flipboard:https://flipboard.com/@/[USER]
 slideshare:https://slideshare.net/[USER]
 fotolog:https://fotolog.com/[USER]
 spotify:https://open.spotify.com/user/[USER]
@@ -60,7 +58,6 @@ ycombinator:https://news.ycombinator.com/user?id=[USER]
 reverbnation:https://www.reverbnation.com/[USER]
 designspiration:https://www.designspiration.net/[USER]
 bandcamp:https://www.bandcamp.com/[USER]
-ifttt:https://www.ifttt.com/p/[USER]
 ebay:https://www.ebay.com/usr/[USER]
 slack:https://[USER].slack.com
 okcupid:https://www.okcupid.com/profile/[USER]
