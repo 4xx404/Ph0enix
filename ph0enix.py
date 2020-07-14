@@ -36,7 +36,7 @@ def search(username,sites):
 		if r.status_code == 200:
 			if username in r.text:
                             print('MATCH: {} in {}:{}'.format(username,w,u))
-		            count+= 1
+		            count += 1
 		count2str=str(count)
 	total= str(len(sites))
 	print('FINISHED: A total of '+count2str+' MATCHES found out of '+total+' websites.')
