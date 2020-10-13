@@ -30,7 +30,7 @@ Be sure to put "[USER]" inside the url to make the tool work properly.
 # Example
 
 ```
-python phe0nix.py test1239
+python3 phe0nix.py test1239
 
 +[+[+[ Ph0enix v1.0 ]+]+]+
  ____  _     ____  _____ _      _ ___  _
