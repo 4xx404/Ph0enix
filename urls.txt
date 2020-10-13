@@ -63,5 +63,4 @@ slack:https://[USER].slack.com
 okcupid:https://www.okcupid.com/profile/[USER]
 skyscanner:https://www.trip.skyscanner.com/user/[USER]
 ello:https://ello.co/[USER]
-tracky:https://tracky.com/user/~[USER]
 basecamp:https://[USER].basecamphq.com/Login
