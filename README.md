@@ -11,7 +11,7 @@ For every url inside the file, the tool will find for username matches.
 # Usage
 
 ```
-git clone https://github.com/Bl1xY/Ph0enix.git
+git clone https://github.com/4xx404/Ph0enix.git
 pip install requests
 cd Ph0enix
 python3 ph0enix.py <username>
