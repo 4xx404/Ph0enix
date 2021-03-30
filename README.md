@@ -1,72 +1,116 @@
-# Ph0enix
-
-A search tool for finding usernames across a variety of sites.
-
-# How it works?
-
-The tool reads a file named urls.txt.
-
-For every url inside the file, the tool will find for username matches.
-
-# Usage
-
+# Ph0enix  
+A search tool for finding usernames across a variety of sites.  
+  
+# How it works?  
+The tool reads a file named urls.txt. For every url inside the file, the tool will find for username matches.  
+  
+# Usage  
+  
 ```
 git clone https://github.com/4xx404/Ph0enix.git
 pip install requests
 cd Ph0enix
-python3 ph0enix.py <username>
+python3 ph0enix.py
 ```
-
-# Adding URL's
-
-Open the urls.txt file and put the new URL with the next format:
-
+  
+# Adding URL's  
+Open the urls.txt file and put the new URL with the next format:  
+  
 ```
 site:url
 ```
-
-Be sure to put "[USER]" inside the url to make the tool work properly.
-
-# Example
-
+  
+Be sure to put "[USER]" inside the url(without quotes) to make the tool work properly.  
+  
+# Example  
+  
 ```
-python3 phe0nix.py test1239
+ .------..------..------..------..------..------..------..------..------.
+ |P.--. ||H.--. ||0.--. ||E.--. ||N.--. ||I.--. ||X.--. ||V.--. ||2.--. |
+ | :/\: || :/\: || :/\: || (\/) || :(): || (\/) || :/\: || :(): || :/\: |
+ | (__) || (__) || :\/: || :\/: || ()() || :\/: || (__) || ()() || (__) |
+ | "--"P|| "--"H|| "--"0|| "--"E|| "--"N|| "--"I|| "--"X|| "--"V|| "--"2|
+ `------'`------'`------'`------'`------'`------'`------'`------'`------'
 
-+[+[+[ Ph0enix v1.0 ]+]+]+
- ____  _     ____  _____ _      _ ___  _
-/  __\/ \ /|/  _ \/  __// \  /|/ \  \//
-|  \/|| |_||| / \||  \  | |\ ||| | \  /
-|  __/| | ||| \_/||  /_ | | \||| | /  \
-\_/   \_/ \|\____/\____\_/  \|\_//__/\
-+[+[+[ Searching for username: test1239 ]+]+]+
-+[+[+[ Ph0enix v1 is working... ]+]+]+
+ Author: 4xx404
+ Version: 2.0
+ Github: https://github.com/4xx404
 
-MATCH: test1239 in ifttt:https://www.ifttt.com/p/test1239
-MATCH: test1239 in tripadvisor:https://tripadvisor.com/members/test1239
-MATCH: test1239 in instagram:https://www.instagram.com/test1239
-MATCH: test1239 in twitter:https://www.twitter.com/test1239
-MATCH: test1239 in vk:https://vk.com/test1239
-MATCH: test1239 in dailymotion:https://www.dailymotion.com/test1239
-MATCH: test1239 in tumblr:https://test1239.tumblr.com
-MATCH: test1239 in last_fm:https://www.last.fm/user/test1239
-MATCH: test1239 in scribd:https://www.scribd.com/test1239
-MATCH: test1239 in spotify:https://open.spotify.com/user/test1239
-MATCH: test1239 in pinterest:https://www.pinterest.com/test1239
-MATCH: test1239 in wordpress:https://test1239.wordpress.com
-MATCH: test1239 in slack:https://test1239.slack.com
-MATCH: test1239 in gravatar:https://en.gravatar.com/test1239
-MATCH: test1239 in deviantart:https://test1239.deviantart.com
-MATCH: test1239 in cashme:https://cash.me/test1239
-MATCH: test1239 in trakt:https://www.trakt.tv/users/test1239
-MATCH: test1239 in flipboard:https://flipboard.com/@/test1239
-MATCH: test1239 in facebook:https://www.twitter.com/test1239
-MATCH: test1239 in canva:https://www.canva.com/test1239
-MATCH: test1239 in github:https://github.com/test1239
-MATCH: test1239 in five_hundred_px:https://500px.com/test1239
-MATCH: test1239 in google_plus:https://plus.google.com/s/test1239/top
-MATCH: test1239 in blogspot:https://test1239.blogspot.com
-MATCH: test1239 in mixcloud:https://www.mixcloud.com/test1239
-MATCH: test1239 in kongregate:https://kongregate.com/accounts/test1239
-MATCH: test1239 in steam:https://steamcommunity.com/id/test1239
-FINISHED: A total of 27 MATCHES found out of 71 websites.
+ [?] Matches may not always be specific to the user you are looking for.
+ [?] For example, someone else could have used the same username elsewhere.
+
+ Searching for username: mjudicious14
+	  [✗] About Me
+	  [✗] Angel List
+	  [✗] Badoo
+	  [✗] Bandcamp
+	  [✗] Basecamp Hq
+	  [✗] Behance
+	  [✗] Bitbucket
+	  [✗] Blipfm
+	  [✗] Buzzfeed
+	  [✗] Canva
+	  [✗] Cashme
+	  [✗] Codeacademy
+	  [✗] Contently
+	  [✗] Creative Market
+	  [✗] Dailymotion
+	  [✗] Designspiration
+	  [✗] Deviantart
+	  [✗] Disqus
+	  [✗] Dribbble
+	  [✗] Ebay
+	  [✗] Ello
+	  [✗] Etsy
+	  [✗] Facebook
+	  [✗] Five Hundred Px
+	  [✗] Flickr
+	  [✗] Fotolog
+	  [✗] Github
+	  [✗] Goodreads
+	  [✓] Google Plus
+	  [✗] Gravatar
+	  [✗] Gumroad
+	  [✗] Houzz
+	  [✗] Hubpages
+	  [✗] Imgur
+	  [✗] Instagram
+	  [✗] Instructables
+	  [✗] Keybase
+	  [✗] Kongregate
+	  [✗] Last Fm
+	  [✗] Livejournal
+	  [✗] Medium
+	  [✗] Mixcloud
+	  [✗] Okcupid
+	  [✗] Pastebin
+	  [✗] Patreon
+	  [✗] Pinterest
+	  [✗] Reddit
+	  [✗] Reverbnation
+	  [✗] Roblox
+	  [✗] Scribd
+	  [✗] Skyscanner
+	  [✗] Slack
+	  [✗] Slideshare
+	  [✗] Soundcloud
+	  [✗] Spotify
+	  [✓] Steam
+	  [✗] Trakt
+	  [✗] Trip Advisor
+	  [✗] Tumblr
+	  [✓] Twitter
+	  [✗] Vk
+	  [✗] Wattpad
+	  [✗] Wikipedia
+	  [✗] Ycombinator
+	  [✗] Youtube
+ 
+ Websites Checked: 65
+ Matches Found: 3
+	  [✓] https://plus.google.com/s/mjudicious14/top
+	  [✓] https://steamcommunity.com/id/mjudicious14
+	  [✓] https://www.twitter.com/mjudicious14
+
+ Scan Finished...
 ```
