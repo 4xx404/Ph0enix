@@ -2,7 +2,7 @@
 A search tool for finding usernames across a variety of sites.  
   
 # How it works?  
-The tool reads a file named urls.txt. For every url inside the file, the tool will find for username matches.  
+The tool reads a file named urls.txt. For every url inside the file, the tool will find the sites where the username matches.  
   
 # Usage  
   
@@ -14,10 +14,13 @@ python3 ph0enix.py
 ```
   
 # Adding URL's  
-Open the urls.txt file and put the new URL with the next format:  
+Open the urls.txt file and put the new URL with the following format:  
   
 ```
-site:url
+site:url  
+example:https://www.example.com/[USER]
+example:https://[USER].example.com/  
+...
 ```
   
 Be sure to put "[USER]" inside the url(without quotes) to make the tool work properly.  
