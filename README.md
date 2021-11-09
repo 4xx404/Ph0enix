@@ -2,31 +2,27 @@
 A search tool for finding usernames across a variety of sites.  
   
 # How it works?  
-The tool reads a file named urls.txt. For every url inside the file, the tool will find the sites where the username matches.  
-  
+The tool uses a config file which holds a list of urls. For every url inside the list, the tool will find the sites where the username matches.  
+
 # Usage  
-  
 ```
 git clone https://github.com/4xx404/Ph0enix.git
-pip install requests
 cd Ph0enix
+python3 -m pip install -r requirements.txt
 python3 ph0enix.py
 ```
   
 # Adding URL's  
-Open the urls.txt file and put the new URL with the following format:  
-  
+Open **Config.py** which can be found in the **Core/** directory and add the new URL with the following format:  
 ```
 site:url  
 example:https://www.example.com/[USER]
-example:https://[USER].example.com/  
-...
+example:https://[USER].example.com/
 ```
   
-Be sure to put "[USER]" inside the url(without quotes) to make the tool work properly.  
-  
+Be sure to put [USER] part inside the url to make the tool work properly.  
+
 # Example  
-  
 ```
  .------..------..------..------..------..------..------..------..------.
  |P.--. ||H.--. ||0.--. ||E.--. ||N.--. ||I.--. ||X.--. ||V.--. ||2.--. |
@@ -57,7 +53,6 @@ Be sure to put "[USER]" inside the url(without quotes) to make the tool work pro
 	  [✗] Codeacademy
 	  [✗] Contently
 	  [✗] Creative Market
-	  [✗] Dailymotion
 	  [✗] Designspiration
 	  [✗] Deviantart
 	  [✗] Disqus
@@ -69,9 +64,8 @@ Be sure to put "[USER]" inside the url(without quotes) to make the tool work pro
 	  [✗] Five Hundred Px
 	  [✗] Flickr
 	  [✗] Fotolog
-	  [✗] Github
+	  [✓] Github
 	  [✗] Goodreads
-	  [✓] Google Plus
 	  [✗] Gravatar
 	  [✗] Gumroad
 	  [✗] Houzz
@@ -88,8 +82,8 @@ Be sure to put "[USER]" inside the url(without quotes) to make the tool work pro
 	  [✗] Okcupid
 	  [✗] Pastebin
 	  [✗] Patreon
-	  [✗] Pinterest
-	  [✗] Reddit
+	  [✓] Pinterest
+	  [✓] Reddit
 	  [✗] Reverbnation
 	  [✗] Roblox
 	  [✗] Scribd
@@ -107,13 +101,26 @@ Be sure to put "[USER]" inside the url(without quotes) to make the tool work pro
 	  [✗] Wattpad
 	  [✗] Wikipedia
 	  [✗] Ycombinator
-	  [✗] Youtube
- 
- Websites Checked: 65
- Matches Found: 3
-	  [✓] https://plus.google.com/s/test143/top
-	  [✓] https://steamcommunity.com/id/test143
-	  [✓] https://www.twitter.com/test143
+	  [✓] Youtube
 
- Scan Finished...
+
+|✓| Found 6 matches out of 63 websites
+
+| Website: Github
+| Location: https://github.com/test143
+
+| Website: Pinterest
+| Location: https://www.pinterest.com/test143
+
+| Website: Reddit
+| Location: https://www.reddit.com/user/test143
+
+| Website: Steam
+| Location: https://steamcommunity.com/id/test143
+
+| Website: Twitter
+| Location: https://www.twitter.com/test143
+
+| Website: Youtube
+| Location: https://www.youtube.com/c/test143
 ```
