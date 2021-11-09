@@ -3,9 +3,9 @@ from Core.Styling.Colors import bc
 class sd:
     Tick = u'\u2713'
     Cross = u'\u2717'
-    iBan = f"{bc.BC} |{bc.GC}i{bc.BC}|" # Info banner"
-    sBan = f"{bc.BC} |{bc.GC}{Tick}{bc.BC}|" # Success banner"
-    eBan = f"{bc.BC} |{bc.RC}{Cross}{bc.BC}|{bc.RC} ERROR:{bc.BC}" # Error banner"
+    iBan = f"{bc.BC} |{bc.GC}i{bc.BC}|"
+    sBan = f"{bc.BC} |{bc.GC}{Tick}{bc.BC}|"
+    eBan = f"{bc.BC} |{bc.RC}{Cross}{bc.BC}|{bc.RC} ERROR:{bc.BC}"
 
     Author = f"{bc.BC}\n\t| Author:{bc.RC} 4{bc.GC}x{bc.BC}x{bc.RC}4{bc.GC}0{bc.BC}4 \t\t     |\n"
     Version = f"{bc.BC}\t| Version:{bc.RC} 3{bc.GC}.{bc.BC}0 \t\t\t     |\n"
