@@ -23,30 +23,34 @@ def Ph0enix(LinkList, Username):
 	FoundCount = 0
 	Matches = []
 
-	print(f"{sBan} Searching: {bc.GC}{Username}{bc.BC}\n")
-	for Link in LinkList:
-		Website = Validator.GetWebsiteName(Link)
-		IsInSite = Request.Search(Link, Username)
+	try:
+		print(f"{sBan} Searching: {bc.GC}{Username}{bc.BC}\n")
+		for Link in LinkList:
+			Website = Validator.GetWebsiteName(Link)
+			IsInSite = Request.Search(Link, Username)
 
-		if(IsInSite):
-			FoundCount += 1
-			Matches.append(Link)
-			print(f" | Website: {bc.GC}{Website}{bc.BC}")
-			print(f" | Status: {bc.GC}Match Found{bc.BC}")
-			print(f" | Location: {bc.GC}{Link}{bc.BC}\n")
-		else:
-			print(f" | Website: {bc.RC}{Website}{bc.BC}")
-			print(f" | Status: {bc.RC}Not Found{bc.BC}")
-			print(f" | Location: {bc.RC}{Link}{bc.BC}\n")
+			if(IsInSite):
+				FoundCount += 1
+				Matches.append(Link)
+				print(f" | Website: {bc.GC}{Website}{bc.BC}")
+				print(f" | Status: {bc.GC}Match Found{bc.BC}")
+				print(f" | Location: {bc.GC}{Link}{bc.BC}\n")
+			else:
+				print(f" | Website: {bc.RC}{Website}{bc.BC}")
+				print(f" | Status: {bc.RC}Not Found{bc.BC}")
+				print(f" | Location: {bc.RC}{Link}{bc.BC}\n")
 
-	Clear()
+		Clear()
 
-	print(f"{sBan} Found {bc.GC}{str(FoundCount)}{bc.BC} matches out of {bc.GC}{str(len(LinkList))}{bc.BC} websites\n")
-	for Match in Matches:
-		print(f" | Website: {bc.GC}{Validator.GetWebsiteName(Match)}{bc.BC}")
-		print(f" | Location: {bc.GC}{Match}{bc.BC}\n")
+		print(f"{sBan} Found {bc.GC}{str(FoundCount)}{bc.BC} matches out of {bc.GC}{str(len(LinkList))}{bc.BC} websites\n")
+		for Match in Matches:
+			print(f" | Website: {bc.GC}{Validator.GetWebsiteName(Match)}{bc.BC}")
+			print(f" | Location: {bc.GC}{Match}{bc.BC}\n")
 
-	Initiate()
+		Initiate()
+	except KeyboardInterrupt:
+		print(f"{bc.BC} | Scan stopped...\n")
+		Initiate()
 
 if __name__ == '__main__':
 	Clear()
@@ -54,15 +58,18 @@ if __name__ == '__main__':
 	print(f"{iBan} For example, someone else could have used the same username elsewhere\n")
 
 	def Initiate():
-		Username = str(input(f"{bc.BC} Username: {bc.GC}"))
+		try:
+			Username = str(input(f"{bc.BC} Username: {bc.GC}"))
 
-		LinkBuild = Validator.LinkFormatter(Username)
-		if(LinkBuild["success"]):
-			Clear()
-			Ph0enix(LinkBuild["data"], Username.lower())
-		else:
-			Clear()
-			print(LinkBuild["data"][0]) # Print Error
-			Initiate()
+			LinkBuild = Validator.LinkFormatter(Username)
+			if(LinkBuild["success"]):
+				Clear()
+				Ph0enix(LinkBuild["data"], Username.lower())
+			else:
+				Clear()
+				print(LinkBuild["data"][0]) # Print Error
+				Initiate()
+		except KeyboardInterrupt:
+			quit()
 
 	Initiate()
