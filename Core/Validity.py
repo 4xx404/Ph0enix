@@ -30,7 +30,9 @@ class Validation:
         if(self.Site == "Steamcommunity"):
             self.Site = "Steam"
         else:
-            return self.Site
+            self.Site = self.Site
+        
+        return self.Site
 
     def LinkFormatter(self, Username):
         self.ResponsePack = {
