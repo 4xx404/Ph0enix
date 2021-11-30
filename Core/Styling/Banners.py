@@ -1,5 +1,5 @@
 import emojis
-from Core.Styling.Colors import bc
+from .Colors import bc
 
 class sd:
     iBan: str = emojis.encode(f" :information_source:{bc.BC} ")
