@@ -13,7 +13,7 @@ from Core.Requester import RequestHandler
 from Core.Error import ErrorHandler
 
 class Ph0enix:
-	def __init__(self) -> None:
+	def __init__(self):
 		self.Config = CoreConfig()
 		self.Cmd = Command()
 		self.Validator = Validation()
