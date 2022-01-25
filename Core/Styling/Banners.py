@@ -15,6 +15,6 @@ class sd:
     |{bc.GC}P{bc.BC}.--. ||{bc.GC}H{bc.BC}.--. ||{bc.GC}0{bc.BC}.--. ||{bc.GC}E{bc.BC}.--. ||{bc.GC}N{bc.BC}.--. ||{bc.GC}I{bc.BC}.--. ||{bc.GC}X{bc.BC}.--. ||{bc.GC}V{bc.BC}.--. ||{bc.GC}3{bc.BC}.--. |
     | :/\: || :/\: || :/\: || (\/) || :(): || (\/) || :/\: || :(): || :/\: |
     | (__) || (__) || :\/: || :\/: || ()() || :\/: || (__) || ()() || (__) |
-    | "--"{bc.GC}P{bc.BC}|| "--"{bc.GC}H{bc.BC}|| "--"{bc.GC}0{bc.BC}|| "--"{bc.GC}E{bc.BC}|| "--"{bc.GC}N{bc.BC}|| "--"{bc.GC}I{bc.BC}|| "--"{bc.GC}X{bc.BC}|| "--"{bc.GC}V{bc.BC}|| "--"{bc.GC}2{bc.BC}|
+    | "--"{bc.GC}P{bc.BC}|| "--"{bc.GC}H{bc.BC}|| "--"{bc.GC}0{bc.BC}|| "--"{bc.GC}E{bc.BC}|| "--"{bc.GC}N{bc.BC}|| "--"{bc.GC}I{bc.BC}|| "--"{bc.GC}X{bc.BC}|| "--"{bc.GC}V{bc.BC}|| "--"{bc.GC}3{bc.BC}|
     `------'`------'`------'`------'`------'`------'`------'`------'`------'
     {Author}{Version}{Github}'''
