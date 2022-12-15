@@ -32,6 +32,7 @@ Be sure to put [USER] part inside the url to make the tool work properly.
  `------'`------'`------'`------'`------'`------'`------'`------'`------'
 
  Author: 4xx404
+ Contributors: jcalabres
  Version: 3.0
  Github: https://github.com/4xx404
 
