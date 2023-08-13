@@ -31,97 +31,83 @@ Be sure to put [USER] part inside the url to make the tool work properly.
  | "--"P|| "--"H|| "--"0|| "--"E|| "--"N|| "--"I|| "--"X|| "--"V|| "--"3|
  `------'`------'`------'`------'`------'`------'`------'`------'`------'
 
- Author: 4xx404
- Contributors: jcalabres
- Version: 3.0
- Github: https://github.com/4xx404
+ Authors: 4xx404			     https://github.com/4xx404
+ Contributors: jcalabres		 https://github.com/jcalabres
+ Version: 1.0
 
  [?] Matches may not always be specific to the user you are looking for.
  [?] For example, someone else could have used the same username elsewhere.
 
  Searching for username: test143
-	  [✗] About Me
-	  [✗] Angel List
-	  [✗] Badoo
-	  [✗] Bandcamp
-	  [✗] Basecamp Hq
-	  [✗] Behance
-	  [✗] Bitbucket
-	  [✗] Blipfm
-	  [✗] Buzzfeed
-	  [✗] Canva
-	  [✗] Cashme
-	  [✗] Codeacademy
-	  [✗] Contently
-	  [✗] Creative Market
-	  [✗] Designspiration
-	  [✗] Deviantart
-	  [✗] Disqus
-	  [✗] Dribbble
-	  [✗] Ebay
-	  [✗] Ello
-	  [✗] Etsy
-	  [✗] Facebook
-	  [✗] Five Hundred Px
-	  [✗] Flickr
-	  [✗] Fotolog
-	  [✓] Github
-	  [✗] Goodreads
-	  [✗] Gravatar
-	  [✗] Gumroad
-	  [✗] Houzz
-	  [✗] Hubpages
-	  [✗] Imgur
-	  [✗] Instagram
-	  [✗] Instructables
-	  [✗] Keybase
-	  [✗] Kongregate
-	  [✗] Last Fm
-	  [✗] Livejournal
-	  [✗] Medium
-	  [✗] Mixcloud
-	  [✗] Okcupid
-	  [✗] Pastebin
-	  [✗] Patreon
-	  [✓] Pinterest
-	  [✓] Reddit
-	  [✗] Reverbnation
-	  [✗] Roblox
-	  [✗] Scribd
-	  [✗] Skyscanner
-	  [✗] Slack
-	  [✗] Slideshare
-	  [✗] Soundcloud
-	  [✗] Spotify
-	  [✓] Steam
-	  [✗] Trakt
-	  [✗] Trip Advisor
-	  [✗] Tumblr
-	  [✓] Twitter
-	  [✗] Vk
-	  [✗] Wattpad
-	  [✗] Wikipedia
-	  [✗] Ycombinator
-	  [✓] Youtube
 
+ ✅ Found 23 potential matches out of 61 websites
 
-|✓| Found 6 matches out of 63 websites
+ | Website: Bitbucket 
+ | Location: https://bitbucket.org/test143
 
-| Website: Github
-| Location: https://github.com/test143
+ | Website: Deviantart 
+ | Location: https://test143.deviantart.com/
 
-| Website: Pinterest
-| Location: https://www.pinterest.com/test143
+ | Website: Disqus 
+ | Location: https://disqus.com/by/test143
 
-| Website: Reddit
-| Location: https://www.reddit.com/user/test143
+ | Website: Ebay 
+ | Location: https://www.ebay.com/usr/test143
 
-| Website: Steam
-| Location: https://steamcommunity.com/id/test143
+ | Website: Facebook 
+ | Location: https://www.facebook.com/test143
 
-| Website: Twitter
-| Location: https://www.twitter.com/test143
+ | Website: Github 
+ | Location: https://github.com/test143
 
-| Website: Youtube
-| Location: https://www.youtube.com/c/test143
+ | Website: Gravatar 
+ | Location: https://en.gravatar.com/test143
+
+ | Website: Instagram 
+ | Location: https://www.instagram.com/test143
+
+ | Website: Medium 
+ | Location: https://medium.com/@/test143
+
+ | Website: Pastebin 
+ | Location: https://pastebin.com/u/test143
+
+ | Website: Pinterest 
+ | Location: https://www.pinterest.com/test143
+
+ | Website: Reddit 
+ | Location: https://www.reddit.com/user/test143
+
+ | Website: Reverbnation 
+ | Location: https://www.reverbnation.com/test143
+
+ | Website: Scribd 
+ | Location: https://www.scribd.com/test143
+
+ | Website: Slideshare 
+ | Location: https://slideshare.net/test143
+
+ | Website: Soundcloud 
+ | Location: https://soundcloud.com/test143
+
+ | Website: Spotify 
+ | Location: https://open.spotify.com/user/test143
+
+ | Website: Steam 
+ | Location: https://steamcommunity.com/id/test143
+
+ | Website: Tumblr 
+ | Location: https://test143.tumblr.com/
+
+ | Website: Vk 
+ | Location: https://vk.com/test143
+
+ | Website: Wattpad 
+ | Location: https://www.wattpad.com/user/test143
+
+ | Website: Ycombinator 
+ | Location: https://news.ycombinator.com/user?id=test143
+
+ | Website: Youtube 
+ | Location: https://www.youtube.com/c/test143
 ```
