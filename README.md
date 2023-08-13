@@ -8,7 +8,7 @@ The tool uses a config file which holds a list of urls. For every url inside the
 ```
 git clone https://github.com/4xx404/Ph0enix.git
 cd Ph0enix
-python3 -m pip install -r requirements.txt
+pip3 install -r requirements.txt
 python3 ph0enix.py
 ```
   
