@@ -6,7 +6,7 @@ from .Styling import *
 
 class CoreConfig:
     def __init__(self):
-        self.AppName, self.Version = "PyRobots", "3"
+        self.AppName, self.Version = "Ph0enix", "3"
 
         self.SitePack = [
             "about_me:https://about.me/[USER]",
