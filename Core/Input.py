@@ -1,38 +1,24 @@
-from .Styling.Colors import bc
+from .Styling import *
 
 from .Commands import Command
 from .Error import ErrorHandler
+from .Validity import Validation
 
 class InputManager:
     def __init__(self):
         self.Cmd = Command()
         self.Error = ErrorHandler()
-
-    def NotEmpty(self, Object):
-        self.Object = Object
-
-        if(type(self.Object) == list):
-            if(len(self.Object) > 0):
-                return True
-            else:
-                return False
-        elif(type(self.Object) == str):
-            if(self.Object != "" or self.Object != " "):
-                return True
-            else:
-                return False
+        self.Validator = Validation()
 
     def SetUsername(self):
-        self.Username: str = str(input(f"{bc.BC} Username:{bc.GC} "))
+        Username = str(input(f"{bc.BC} Username:{bc.GC} "))
 
-        if(self.NotEmpty(self.Username)):
-            if(len(self.Username) > 1):
-                return self.Username
+        if(self.Validator.NotEmpty(Username)):
+            if(len(Username) >= 3):
+                return Username
             else:
-                self.Cmd.Clear()
-                print(self.Error.Throw("username_length_too_short", self.Username))
+                self.Cmd.Clear(self.Error.Throw("username_length_too_short", Username), False)
                 self.SetUsername()
         else:
-            self.Cmd.Clear()
-            print(self.Error.Throw("empty_username_value", None))
+            self.Cmd.Clear(self.Error.Throw("empty_username_value", None), False)
             self.SetUsername()

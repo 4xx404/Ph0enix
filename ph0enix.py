@@ -2,8 +2,7 @@
 import sys
 sys.dont_write_bytecode = True
 
-from Core.Styling.Banners import sd
-from Core.Styling.Colors import bc
+from Core.Styling import *
 
 from Core.Config import CoreConfig
 from Core.Commands import Command
@@ -21,65 +20,66 @@ class Ph0enix:
 		self.Error = ErrorHandler()
 
 	def BuildLinks(self, Username: str):
-		self.Username:str = Username
+		BuiltLinks = self.Request.LinkFormatter(Username)
+		
+		if(len(BuiltLinks) > 0): return BuiltLinks
 
-		self.BuiltLinks = self.Validator.LinkFormatter(self.Username)
-		if(len(self.BuiltLinks) > 0):
-			return self.BuiltLinks
-		else:
-			self.Cmd.Clear()
-			print(f"{sd.eBan} No data found")
-			Initiate()
+		self.Cmd.Clear(f"{sd.eBan} No data found", False)
+		Initiate(True)
 
-	def StartSearch(self, Username, FormattedLinks: list):
-		self.Username = Username
-		self.Links: list = FormattedLinks
+	def StartSearch(self, Username: str, FormattedLinks: list):
+		self.Cmd.Clear(f"{sd.sBan}Searching for {bc.GC}{Username}{bc.BC}\n", False)
 
-		self.FoundCount = 0
-		self.Matches = []
+		Matches = []
 
-		print(f"{sd.sBan} Searching for {bc.GC}{Username}{bc.BC}\n")
-		for self.Link in self.Links:
-			self.Website = self.Validator.GetWebsiteName(self.Link)
-			self.IsInSite = self.Request.Search(self.Link, self.Username)
+		for Link in FormattedLinks:
+			WebsiteName = self.Request.GetWebsiteName(Link)
 
-			if(self.IsInSite):
-				self.FoundCount += 1
-				self.Matches.append(self.Link)
-				print(f" | Website: {bc.GC}{self.Website}{bc.BC}\n | Status: {bc.GC}Match Found{bc.BC}\n | Location: {bc.GC}{self.Link}{bc.BC}\n")
-			else:
-				print(f" | Website: {bc.RC}{self.Website}{bc.BC}\n | Status: {bc.RC}Not Found{bc.BC}\n | Location: {bc.RC}{self.Link}{bc.BC}\n")
+			if(self.Validator.NotEmpty(WebsiteName)):
+				IsInSite = self.Request.Search(Link, Username)
 
-		return self.Matches, self.FoundCount
+				if(IsInSite):
+					Matches.append(Link)
 
-	def PrintResults(self, Results: list, FoundNum: int, TotalLinkCount: int):
-		self.Cmd.Clear()
-		self.Results: list = Results
-		self.FoundCount = FoundNum
-		self.TotalLinkCount = TotalLinkCount
+					StatusBanner = f"{bc.GC}Match Found{bc.BC}"
+				else:
+					StatusBanner = f"{bc.RC}Not Found{bc.BC}"
+				
+				print(f" | Website: {bc.GC}{WebsiteName}{bc.BC}\n | Status: {StatusBanner}\n | Location: {bc.GC}{Link}{bc.BC}\n")
 
-		print(f"{sd.sBan} Found {bc.GC}{str(self.FoundCount)}{bc.BC} matches out of {bc.GC}{self.TotalLinkCount}{bc.BC} websites\n")
-		for self.Match in self.Results:
-			print(f" | Website: {bc.GC}{self.Validator.GetWebsiteName(self.Match)}{bc.BC}")
-			print(f" | Location: {bc.GC}{self.Match}{bc.BC}\n")
+		return Matches
+
+	def PrintResults(self, SearchResults: list, TotalLinkCount: int):
+		FoundCount = 0
+
+		if(self.Validator.NotEmpty(SearchResults)):
+			FoundCount = len(SearchResults)
+
+		self.Cmd.Clear(f"{sd.sBan}Found {bc.GC}{str(FoundCount)}{bc.BC} potential matches out of {bc.GC}{TotalLinkCount}{bc.BC} websites\n", False)
+
+		for Match in SearchResults:
+			print(f" | Website: {bc.GC}{self.Request.GetWebsiteName(Match)}{bc.BC} \n | Location: {bc.GC}{Match}{bc.BC}\n")
 
 		Initiate(True)
 
-if __name__ == '__main__':
-	def Initiate(SeenIntro = False):
+if(__name__ == "__main__"):
+	def Intro():
+		print(f"{sd.iBan} Matches may not always be specific to the user you are looking for")
+		print(f"{sd.iBan} For example, someone else could have used the same username elsewhere\n")
+
+	def Initiate(SeenIntro: bool = False):
 		try:
 			Run = Ph0enix()
 
-			if(not SeenIntro):
-				print(f"{sd.iBan} Matches may not always be specific to the user you are looking for")
-				print(f"{sd.iBan} For example, someone else could have used the same username elsewhere\n")
+			if(not SeenIntro): Intro()
 
 			Username = InputManager().SetUsername()
 			WebsiteLinks = Run.BuildLinks(Username)
-			SearchResults, FoundCount = Run.StartSearch(Username, WebsiteLinks)
-			Run.PrintResults(SearchResults, FoundCount, len(WebsiteLinks))
+			SearchResults = Run.StartSearch(Username, WebsiteLinks)
+
+			Run.PrintResults(SearchResults, len(WebsiteLinks))
 		except KeyboardInterrupt:
 			quit()
 
 	Command().Clear()
-	Initiate()
+	Initiate(False)

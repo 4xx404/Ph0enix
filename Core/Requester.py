@@ -1,34 +1,55 @@
-import requests
+import sys, requests, tld
+sys.dont_write_bytecode = True
 
-from Core.Config import CoreConfig
-from Core.Error import ErrorHandler
+from .Config import CoreConfig
+from .Commands import Command
+from .Error import ErrorHandler
+from .Validity import Validation
 
 class RequestHandler:
     def __init__(self):
+        self.Cmd = Command()
         self.Error = ErrorHandler()
         self.Config = CoreConfig()
+        self.Validator = Validation()
 
-    def IsLive(self, Link):
-        self.Link = Link
-        self.Request = requests.get(self.Link, headers=self.Config.Headers)
+    def LinkFormatter(self, Username: str):
+        Response = []
 
-        if(self.Request.status_code == 200):
-            return True
-        else:
-            return False
+        for Link in self.Config.SitePack:
+            if("[USER]" in Link):
+                Response.append(Link.split(":", 1)[1].replace("[USER]", Username))
+            else:
+                print(self.Error.Throw("link_username_replacement_chunk_not_found", Username))
 
-    def Search(self, Link, Username):
-        self.Link = Link
-        self.Username = Username
+        return Response
 
-        if(self.IsLive(self.Link)):
+    def IsLive(self, Link: str):
+        if(self.Validator.IsLinkFormat(Link)):
+            try:
+                Request = requests.get(Link, headers=self.Config.Headers, allow_redirects=True)
+
+                if(Request.status_code == 200): return True
+            except Exception:
+                pass
+
+        return False
+    
+    def GetWebsiteName(self, Link: str) -> (str | None):
+        if(self.Validator.IsLinkFormat(Link)):
+            Site = tld.get_tld(Link, as_object=True).domain.title()
+
+            if(Site.lower() == "steamcommunity"): Site = "Steam"
+            
+            return Site
+
+        return None
+
+    def Search(self, Link: str, Username: str):
+        if(self.IsLive(Link)):
             for FailWord in self.Config.FailWords:
-                if(self.Username in self.Request.text.lower() and not FailWord in self.Request.text.lower()):
-                    return True
-                else:
-                    continue
+                Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
+                
+                if(Username in Request.text.lower() and not FailWord in Request.text.lower()): return True
 
-            return False
-
-        else:
-            return False
+        return False

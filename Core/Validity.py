@@ -1,34 +1,63 @@
-from typing import List
-from tld import get_tld
-
-from Core.Config import CoreConfig
-from Core.Error import ErrorHandler
+import sys, re
+sys.dont_write_bytecode = True
 
 class Validation:
     def __init__(self):
-        self.Config = CoreConfig()
-        self.Error = ErrorHandler()
+        self.EmailRegex = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
+        self.PhoneNumberRegex = r"^\(*\+*[1-9]{0,3}\)*-*[1-9]{0,3}[-. /]*\(*[2-9]\d{2}\)*[-. /]*\d{3}[-. /]*\d{4} *e*x*t*\.* *\d{0,4}$"
 
-    def GetWebsiteName(self, Link):
-        self.Link = Link
-        self.Site = get_tld(self.Link, as_object=True).domain.title()
+        self.DomainExtensions: list = [".com", ".net", ".edu", ".org", ".gov", ".int", ".mil", ".aero", ".cat", ".asia", ".mobi", ".coop", ".travel", ".tel", ".jobs", ".pro", ".biz", ".info", ".store", ".me", ".co", ".online", ".xyz", ".site", ".club", ".shop", ".app", ".live", ".ac", ".ad", ".ae", ".af", ".ag", ".ai", ".al", ".am", ".an", ".ao", ".aq", ".ar", ".as", ".at", ".au", ".aw", ".ax", ".az", ".ba", ".bb", ".bd", ".be", ".bf", ".bg", ".bh", ".bi", ".bj", ".bl", ".bm", ".bn", ".bo", ".br", ".bq", ".bs", ".bt", ".bv", ".bw", ".by", ".bz", ".ca", ".cc", ".cd", ".cf", ".cg", ".ch", ".ci", ".ck", ".cl", ".cm", ".cn", ".co", ".cr", ".cs", ".cu", ".cv", ".cw", ".cx", ".cy", ".cz", ".dd", ".de", ".dj", ".dk", ".dm", ".do", ".dz", ".ec", ".ee", ".eg", ".eh", ".er", ".es", ".et", ".eu", ".fi", ".fj", ".fk", ".fm", ".fo", ".fr", ".ga", ".gb", ".gd", ".ge", ".gf", ".gg", ".gh", ".gi", ".gl", ".gm", ".gn", ".gp", ".gq", ".gr", ".gs", ".gt", ".gu", ".gw", ".gy", ".hk", ".hm", ".hn", ".hr", ".ht", ".hu", ".id", ".ie", ".il", ".im", ".in", ".io", ".iq", ".ir", ".is", ".it", ".je", ".jm", ".jo", ".jp", ".ke", ".kg", ".kh", ".ki", ".km", ".kn", ".kp", ".kr", ".kw", ".ky", ".kz", ".la", ".lb", ".lc", ".li", ".lk", ".lr", ".ls", ".lt", ".lu", ".lv", ".ly", ".ma", ".mc", ".me", ".mf", ".mg", ".mh", ".mk", ".ml", ".mm", ".mn", ".mo", ".mp", ".mq", ".mr", ".ms", ".mt", ".mu", ".mv", ".mw", ".mx", ".my", ".mz", ".na", ".nc", ".ne", ".nf", ".ng", ".ni", ".nl", ".no", ".np", ".nr", ".nu", ".nz", ".om", ".pa", ".pe", ".pf", ".pg", ".ph", ".pk", ".pm", ".pn", ".pr", ".ps", ".pt", ".pw", ".qa", ".re", ".ro", ".rs", ".ru", ".rw", ".sa", ".sb", ".sc", ".sd", ".se", ".sg", ".si", ".sj", ".sk", ".sl", ".sm", ".sn", ".so", ".sr", ".ss", ".st", ".su", ".sv", ".sx", ".sy", ".sz", ".tc", ".td", ".tf", ".tg", ".th", ".tj", ".tk", ".tl", ".tm", ".tn", ".to", ".tp", ".tr", ".tt", ".tv", ".tw", ".tz", ".ua", ".ug", ".uk", ".um", ".us", ".uy", ".uz", ".va", ".vc", ".ve", ".vg", ".vi", ".vn", ".vu", ".wf", ".ws", ".ye", ".yt", ".yu", ".za", ".zm", ".zr", ".zw"]
 
-        if(self.Site == "Steamcommunity"):
-            self.Site = "Steam"
-        else:
-            self.Site = self.Site
+    def NotEmpty(self, Object: str or list or dict = None):
+        if(Object != None):
+            if(type(Object) == str and Object.strip() != ""): return True
+            elif(type(Object) == list and len(Object) > 0): return True
+            elif(type(Object) == dict and len(Object.keys()) > 0): return True
+            
+        return False
+
+    def HasProtocol(self, Link: str = None):
+        if(self.NotEmpty(Link) and Link.startswith("http://") or Link.startswith("https://")): return True
+
+        return False
+
+    def HasDomainExtension(self, Link: str = None):
+        if(self.NotEmpty(Link)):
+            InLinkCount: int = 0
+
+            for Extension in self.DomainExtensions:
+                if(Extension in Link): InLinkCount += 1
+                else: continue
+            
+            if(InLinkCount > 0): return True
         
-        return self.Site
+        return False
+        
+    def StartsOrEndsWith(self, TrailType: str = None, StringValue: str = None, CharacterToCheck: str = None):
+        if(self.NotEmpty(TrailType) and self.NotEmpty(StringValue) and self.NotEmpty(CharacterToCheck)):
+            if((TrailType == "start" and StringValue.startswith(CharacterToCheck)) or (TrailType == "end" and StringValue.endswith(CharacterToCheck))): return True
+    
+        return False
 
-    def LinkFormatter(self, Username: str):
-        self.Username: str = Username
-        self.Links: list = self.Config.SitePack
+    def IsEmailFormat(self, Email: str):
+        if(self.NotEmpty(Email) and re.fullmatch(self.EmailRegex, Email)):
+            return True
+        else:
+            return False
 
-        self.Response: list = []
-        for self.Link in self.Links:
-            if("[USER]" in self.Link):
-                self.Response.append(self.Link.split(":", 1)[1].replace("[USER]", self.Username))
-            else:
-                print(self.Error.Throw("link_username_replacement_chunk_not_found", self.Username))
+    def IsPhoneNumberFormat(self, PhoneNumber: str = None):
+        if(self.NotEmpty(PhoneNumber)):
+            if(PhoneNumber.startswith("+") == False):
+                PhoneNumber = f"+{PhoneNumber}"
 
-        return self.Response
+            if(re.fullmatch(self.PhoneNumberRegex, PhoneNumber)):
+                return True
+
+        return False
+
+    def IsLinkFormat(self, Link: str = None, IncludeDomainExtensionCheck: bool = False):
+        if(self.NotEmpty(Link)):
+            if(self.HasProtocol(Link) and (IncludeDomainExtensionCheck == False or (IncludeDomainExtensionCheck == True and self.HasDomainExtension(Link=Link)))):
+                return True
+
+        return False
