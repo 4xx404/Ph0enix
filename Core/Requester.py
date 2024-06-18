@@ -48,10 +48,13 @@ class RequestHandler:
 
     def Search(self, Link: str):
         if(self.IsLive(Link)):
-            for FailWord in self.Config.FailWords:
-                Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
-                
-                if(FailWord in Request.text.lower() or Request.status_code == 404):
+            Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
+
+            if(Request.status_code == 404):
+                return False
+            
+            for FailWord in self.Config.FailWords:    
+                if(FailWord in Request.text.lower()):
                     return False
             
             return True
