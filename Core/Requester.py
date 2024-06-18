@@ -51,7 +51,7 @@ class RequestHandler:
             for FailWord in self.Config.FailWords:
                 Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
                 
-                if(FailWord in Request.text.lower()):
+                if(FailWord in Request.text.lower() or Request.status_code == 404):
                     return False
             
             return True
