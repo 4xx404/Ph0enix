@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys, requests, tld
 sys.dont_write_bytecode = True
 
@@ -13,23 +14,25 @@ class RequestHandler:
         self.Config = CoreConfig()
         self.Validator = Validation()
 
-    def LinkFormatter(self, Username: str):
+    def LinkFormatter(self, Username: str = None) -> list:
         Response = []
 
-        for Link in self.Config.SitePack:
-            if("[USER]" in Link):
-                Response.append(Link.split(":", 1)[1].replace("[USER]", Username))
-            else:
-                print(self.Error.Throw("link_username_replacement_chunk_not_found", Username))
+        if(self.Validator.NotEmpty(Username)):
+            for Link in self.Config.SitePack:
+                if("[USER]" in Link):
+                    Response.append(Link.split(":", 1)[1].replace("[USER]", Username))
+                else:
+                    print(self.Error.Throw("link_username_replacement_chunk_not_found", Username))
 
         return Response
 
-    def IsLive(self, Link: str):
+    def IsLive(self, Link: str) -> bool:
         if(self.Validator.IsLinkFormat(Link)):
             try:
                 Request = requests.get(Link, headers=self.Config.Headers, allow_redirects=True)
 
-                if(Request.status_code == 200): return True
+                if(Request.status_code == 200):
+                    return True
             except Exception:
                 pass
 
@@ -46,7 +49,7 @@ class RequestHandler:
 
         return None
 
-    def Search(self, Link: str):
+    def Search(self, Link: str) -> bool:
         if(self.IsLive(Link)):
             Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
 

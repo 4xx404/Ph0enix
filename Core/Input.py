@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+import sys
+sys.dont_write_bytecode = True
+
 from .Styling import *
 
 from .Commands import Command
@@ -10,7 +14,7 @@ class InputManager:
         self.Error = ErrorHandler()
         self.Validator = Validation()
 
-    def SetUsername(self):
+    def SetUsername(self) -> (str | None):
         Username = str(input(f"{bc.BC} Username:{bc.GC} "))
 
         if(self.Validator.NotEmpty(Username)):

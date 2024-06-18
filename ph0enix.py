@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import sys
 sys.dont_write_bytecode = True
@@ -19,15 +20,16 @@ class Ph0enix:
 		self.Request = RequestHandler()
 		self.Error = ErrorHandler()
 
-	def BuildLinks(self, Username: str):
+	def BuildLinks(self, Username: str = None) -> (list | None):
 		BuiltLinks = self.Request.LinkFormatter(Username)
 		
-		if(len(BuiltLinks) > 0): return BuiltLinks
+		if(len(BuiltLinks) > 0):
+			return BuiltLinks
 
 		self.Cmd.Clear(f"{sd.eBan} No data found", False)
 		Initiate(True)
 
-	def StartSearch(self, Username: str, FormattedLinks: list):
+	def StartSearch(self, Username: str = None, FormattedLinks: list = []) -> list:
 		self.Cmd.Clear(f"{sd.sBan}Searching for {bc.GC}{Username}{bc.BC}\n", False)
 
 		Matches = []
@@ -49,7 +51,7 @@ class Ph0enix:
 
 		return Matches
 
-	def PrintResults(self, SearchResults: list, TotalLinkCount: int):
+	def PrintResults(self, SearchResults: list = [], TotalLinkCount: int = 0) -> None:
 		FoundCount = 0
 
 		if(self.Validator.NotEmpty(SearchResults)):
@@ -71,9 +73,11 @@ if(__name__ == "__main__"):
 		try:
 			Run = Ph0enix()
 
-			if(not SeenIntro): Intro()
+			if(not SeenIntro):
+				Intro()
 
 			Username = InputManager().SetUsername()
+
 			WebsiteLinks = Run.BuildLinks(Username)
 			SearchResults = Run.StartSearch(Username, WebsiteLinks)
 
