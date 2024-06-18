@@ -36,7 +36,7 @@ class Ph0enix:
 			WebsiteName = self.Request.GetWebsiteName(Link)
 
 			if(self.Validator.NotEmpty(WebsiteName)):
-				IsInSite = self.Request.Search(Link, Username)
+				IsInSite = self.Request.Search(Link)
 
 				if(IsInSite):
 					Matches.append(Link)
