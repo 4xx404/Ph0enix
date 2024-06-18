@@ -12,7 +12,7 @@ class sd:
 	sBan: str = emojis.encode(f" :white_check_mark:{bc.BC} ")
 	eBan: str = emojis.encode(f" :x:{bc.RC} ERROR:{bc.BC}")
 
-	def Colorify(String: str = None, Color: str = None):
+	def Colorify(String: str = None, Color: str = None) -> str:
 		if(Color == None):
 			[LastCharColor, NewString] = ["red", ""]
 

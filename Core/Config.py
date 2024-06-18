@@ -86,26 +86,34 @@ class CoreConfig:
             "Accept-Encoding": "gzip, deflate, br"
         }
     
-    def GetAppName(self, IncludePlaceholder: bool = False):
-        if(IncludePlaceholder == True): return f"{bc.BC} App Name: {bc.GC}{self.AppName}{bc.BC}"
-        else: return f"{bc.GC}{self.AppName}{bc.BC}"
+    def GetAppName(self, IncludePlaceholder: bool = False) -> str:
+        if(IncludePlaceholder == True):
+            return f"{bc.BC} App Name: {bc.GC}{self.AppName}{bc.BC}"
+        
+        return f"{bc.GC}{self.AppName}{bc.BC}"
             
-    def GetAppVersion(self, IncludePlaceholder: bool = False, IncludeiBan = True):
-        if(IncludeiBan == True): VersionString = f"{sd.iBan} "
-        else: VersionString = f"{bc.BC} "
+    def GetAppVersion(self, IncludePlaceholder: bool = False, IncludeiBan = True) -> str:
+        if(IncludeiBan == True):
+            VersionString = f"{sd.iBan} "
+        else:
+            VersionString = f"{bc.BC} "
 
-        if(IncludePlaceholder == True): return VersionString + f"Version: {bc.GC}{self.Version}{bc.BC}"
-        else: return VersionString + f"{bc.GC}{self.Version}{bc.BC}"
+        if(IncludePlaceholder == True):
+            return VersionString + f"Version: {bc.GC}{self.Version}{bc.BC}"
 
-    def GenerateID(self, Length: int = 0):
-        if(Length <= 0): Length = 32
+        return VersionString + f"{bc.GC}{self.Version}{bc.BC}"
+
+    def GenerateID(self, Length: int = 0) -> str:
+        if(Length <= 0):
+            Length = 32
 
         return "".join(random.choices(string.ascii_lowercase, k=Length))
 
-    def GenerateMD5(self, StringValue: str = None):
-        if(StringValue == None): StringValue = self.GenerateID()
+    def GenerateMD5(self, StringValue: str = None) -> str:
+        if(StringValue == None):
+            StringValue = self.GenerateID()
 
         return hashlib.md5(StringValue.encode("utf-8")).hexdigest()
     
-    def GetNumericDatetimeNow(self):
+    def GetNumericDatetimeNow(self) -> str:
         return datetime.datetime.now().strftime('%d-%m-%y-%H%M%S')

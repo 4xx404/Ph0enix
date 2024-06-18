@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys, re
 sys.dont_write_bytecode = True
 
