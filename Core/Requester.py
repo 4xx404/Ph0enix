@@ -39,7 +39,8 @@ class RequestHandler:
         if(self.Validator.IsLinkFormat(Link)):
             Site = tld.get_tld(Link, as_object=True).domain.title()
 
-            if(Site.lower() == "steamcommunity"): Site = "Steam"
+            if(Site.lower() == "steamcommunity"):
+                Site = "Steam"
             
             return Site
 
@@ -50,6 +51,7 @@ class RequestHandler:
             for FailWord in self.Config.FailWords:
                 Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True)
                 
-                if(Username in Request.text.lower() and not FailWord in Request.text.lower()): return True
+                if(not FailWord in Request.text.lower()):
+                    return True
 
         return False
