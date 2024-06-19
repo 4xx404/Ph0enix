@@ -14,12 +14,16 @@ class Command:
         self.Logo: str = sd.Logo
 
     def Clear(self, Message: str = None, ShouldQuit: bool = False) -> None:
-        os.system("clear")
+        if os.name == 'nt':  # For Windows
+            os.system('cls')
+        else:  # For Linux/OS X
+            os.system('clear')
+    
         print(self.Logo)
-
+    
         if(self.Validator.NotEmpty(Message)):
             print(Message)
-
+    
         if(ShouldQuit):
             quit()
     
