@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import sys, logging, os
+import sys
 sys.dont_write_bytecode = True
 
 from Core.Styling import *
@@ -12,9 +12,7 @@ from Core.Validity import Validation
 from Core.Requester import RequestHandler
 from Core.Error import ErrorHandler
 
-if os.path.isfile("app.log"):  # Remove the old log file if it exists
-    os.remove("app.log")
-logging.basicConfig(level=logging.INFO, filename='app.log', filemode='w', format='%(levelname)s - %(message)s') # Create a new log file
+ErrorHandler().CreateLogFile()
 
 class Ph0enix:
 	def __init__(self):
@@ -48,10 +46,10 @@ class Ph0enix:
 					Matches.append(Link)
 
 					StatusBanner = f"{bc.GC}Match Found{bc.BC}"
-					logging.info(f"Match found on {WebsiteName}")
+					self.Error.AddToLog("info", f"Match found on '{WebsiteName}'")
 				else:
 					StatusBanner = f"{bc.RC}Not Found{bc.BC}"
-					logging.info(f"No match found on {WebsiteName}")
+					self.Error.AddToLog("info", f"No match found on '{WebsiteName}'")
 				
 				print(f" | Website: {bc.GC}{WebsiteName}{bc.BC}\n | Status: {StatusBanner}\n | Location: {bc.GC}{Link}{bc.BC}\n")
 
@@ -89,7 +87,7 @@ if(__name__ == "__main__"):
 
 			Run.PrintResults(SearchResults, len(WebsiteLinks))
 		except KeyboardInterrupt:
-			logging.error("User interrupted the program")
+			ErrorHandler().AddToLog("info", "User interrupted the program")
 			quit()
 
 	Command().Clear()

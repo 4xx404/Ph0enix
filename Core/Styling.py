@@ -40,13 +40,14 @@ class sd:
 
 		return NewString
 
-	Author_4xx404 = Colorify("4xx404", "green") + f"\t\t\t " + Colorify("https://github.com/4xx404", "green") + f"{bc.BC}\n"
-	Contributor_JCalabres = Colorify("jcalabres", "green") + f"\t\t " + Colorify("https://github.com/jcalabres", "green") + f"{bc.BC}\n"
+	Author_4xx404 = Colorify("4xx404", "green") + f"\t\t\t " + Colorify("https://github.com/4xx404", "green") + f"{bc.BC}\n\n"
+	Contributor_JCalabres = Colorify("jcalabres", "green") + f"\t\t " + Colorify("https://github.com/jcalabres", "green") + f"{bc.BC}"
+	Contributor_Kf637 = Colorify("Kf637", "green") + f"\t\t\t " + Colorify("https://github.com/Kf637", "green") + f"{bc.BC}\n\n"
 
-	Authors = f"{bc.BC}\n Authors: {Author_4xx404}"
-	Contributors = f"{bc.BC} Contributors: {Contributor_JCalabres}"
+	Authors = f"{bc.BC}\n Authors: \n\t{Author_4xx404}"
+	Contributors = f"{bc.BC} Contributors: \n\t{Contributor_JCalabres}\n\t{Contributor_Kf637}"
 
-	Version = f"{bc.BC} Version: {bc.RC}1{bc.GC}.{bc.BC}0\n"
+	Version = f"{bc.BC} Version: {bc.GC}1.0{bc.BC}\n"
 
 	Logo = f"""{bc.BC}
  .------..------..------..------..------..------..------..------..------.

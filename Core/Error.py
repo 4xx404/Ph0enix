@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys
+import sys, os, logging
 sys.dont_write_bytecode = True
 
 from Core.Styling import *
@@ -17,6 +17,8 @@ class ErrorHandler:
             "none_200_response",
         ]
 
+        self.LogFileName = "app.log"
+
     def Throw(self, ErrorType: str = None, ErrorData: any = None) -> (str | None):
         if(self.Validator.NotEmpty(ErrorType) and ErrorType.lower() in self.DefinedErrors):
             if(ErrorType == "empty_username_value"):
@@ -32,3 +34,25 @@ class ErrorHandler:
                 return f"\n{sd.eBan} Error Type cannot be None\n"    
             else:
                 return f"\n{sd.eBan} Undefined Error Type {bc.RC}{ErrorType}{bc.BC}\n"
+    
+    def CreateLogFile(self) -> None:
+        # Remove the old log file if it exists
+        if(os.path.isfile(self.LogFileName)):
+            os.remove(self.LogFileName)
+
+        # Create a new log file
+        logging.basicConfig(
+            level=logging.INFO,
+            filename=self.LogFileName,
+            filemode="w",
+            format="%(levelname)s - %(message)s"
+        )
+
+    def AddToLog(self, Type: str = None, Message: str = None) -> None:
+        if(Type and Message):
+            Type = Type.lower().strip()
+
+            if(Type == "info"):
+                logging.info(Message)
+            elif(Type == "error"):
+                logging.error(Message)

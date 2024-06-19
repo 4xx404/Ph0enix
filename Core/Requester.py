@@ -6,9 +6,6 @@ from .Config import CoreConfig
 from .Commands import Command
 from .Error import ErrorHandler
 from .Validity import Validation
-import logging, os
-
-
 
 class RequestHandler:
     def __init__(self):
@@ -31,17 +28,17 @@ class RequestHandler:
 
     def IsLive(self, Link: str) -> bool:
         if(self.Validator.IsLinkFormat(Link)):
-            logging.info(f'requesting {Link}')
+            self.Error.AddToLog("info", f"Requesting '{Link}'")
+
             try:
                 Request = requests.get(Link, headers=self.Config.Headers, allow_redirects=True, timeout=5)
 
                 if(Request.status_code == 200):
                     return True
             except requests.exceptions.Timeout:
-               logging.error(f'Timeout occurred while requesting {Link}')
+                self.Error.AddToLog("error", f"Timeout occurred while requesting '{Link}'")
             except Exception:
-               logging.error(f'failed to request {Link}')
-            pass
+                self.Error.AddToLog("error", f"Failed to request '{Link}'")
 
         return False
     
@@ -65,7 +62,8 @@ class RequestHandler:
             
             for FailWord in self.Config.FailWords:    
                 if(FailWord in Request.text.lower()):
-                    logging.info(f"FailWord '{FailWord}' found in response text")
+                    self.Error.AddToLog("info", f"FailWord '{FailWord}' found in '{Link}' response text")
+
                     return False
             
             return True

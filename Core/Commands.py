@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys, os
+import sys, platform, os
 sys.dont_write_bytecode = True
 from tld import get_tld
 
@@ -13,11 +13,27 @@ class Command:
 
         self.Logo: str = sd.Logo
 
+        self.CommandMatrix = {
+            "windows": {
+                "clear": "cls"
+            },
+
+            "linux": {
+                "clear": "clear"
+            },
+            
+            "darwin": {
+                "clear": "clear"
+            }
+        }
+
+    def GetOS(self) -> str:
+        return platform.system().lower()
+
     def Clear(self, Message: str = None, ShouldQuit: bool = False) -> None:
-        if os.name == 'nt':  # For Windows
-            os.system('cls')
-        else:  # For Linux/OS X
-            os.system('clear')
+        Platform = self.GetOS()
+
+        os.system(self.CommandMatrix[Platform]["clear"])
     
         print(self.Logo)
     
