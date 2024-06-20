@@ -47,7 +47,7 @@ class sd:
 	Authors = f"{bc.BC}\n Authors: \n\t{Author_4xx404}"
 	Contributors = f"{bc.BC} Contributors: \n\t{Contributor_JCalabres}\n\t{Contributor_Kf637}"
 
-	Version = f"{bc.BC} Version: {bc.GC}1.0{bc.BC}\n"
+	Version = f"{bc.BC} Version: {bc.GC}2.0{bc.BC}\n"
 
 	Logo = f"""{bc.BC}
  .------..------..------..------..------..------..------..------..------.

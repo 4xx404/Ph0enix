@@ -21,10 +21,7 @@ class Validation:
         return False
 
     def HasProtocol(self, Link: str = None) -> bool:
-        if(self.NotEmpty(Link) and Link.startswith(("http://", "https://"))):
-            return True
-
-        return False
+        return (self.NotEmpty(Link) and Link.startswith(("http://", "https://")))
 
     def HasDomainExtension(self, Link: str = None) -> bool:
         if(self.NotEmpty(Link)):
@@ -70,3 +67,6 @@ class Validation:
                 return True
 
         return False
+    
+    def ID(self, IDValue: str = None) -> bool:
+        return (self.NotEmpty(IDValue) and len(IDValue) == 32)
