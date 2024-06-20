@@ -214,7 +214,7 @@ class Database:
                             self.Error.AddToLog("error", f"Database.Insert.Error: execution failure ({e})")
                 else:
                     self.Error.Throw("database_insert_missing_values")
-                    self.Error.AddToLog("error", f"Database.Insert.Error: insert values are required")                    
+                    self.Error.AddToLog("error", f"Database.Insert.Error: insert values are required")
             else:
                 self.Error.Throw("database_insert_invalid_table", Table)
                 self.Error.AddToLog("error", f"Database.Insert.Error: table '{Table}' does not exist")

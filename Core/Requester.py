@@ -36,9 +36,9 @@ class RequestHandler:
                 if(Request.status_code == 200):
                     return True
             except requests.exceptions.Timeout:
-                self.Error.AddToLog("error", f"Timeout occurred while requesting '{Link}'")
+                self.Error.AddToLog("error", f"Timeout occurred while live checking '{Link}'")
             except Exception:
-                self.Error.AddToLog("error", f"Failed to request '{Link}'")
+                self.Error.AddToLog("error", f"Failed to live check '{Link}'")
 
         return False
     
@@ -55,17 +55,22 @@ class RequestHandler:
 
     def Search(self, Link: str) -> bool:
         if(self.IsLive(Link)):
-            Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True, timeout=5)
+            try:
+                Request = requests.get(url=Link, headers=self.Config.Headers, allow_redirects=True, timeout=5)
 
-            if(Request.status_code == 404):
-                return False
-            
-            for FailWord in self.Config.FailWords:    
-                if(FailWord in Request.text.lower()):
-                    self.Error.AddToLog("info", f"FailWord '{FailWord}' found in '{Link}' response text")
-
+                if(Request.status_code == 404):
                     return False
-            
-            return True
+                
+                for FailWord in self.Config.FailWords:    
+                    if(FailWord in Request.text.lower()):
+                        self.Error.AddToLog("info", f"FailWord '{FailWord}' found in '{Link}' response text")
+
+                        return False
+                
+                return True
+            except requests.exceptions.Timeout:
+                self.Error.AddToLog("error", f"Timeout occurred while requesting '{Link}'")
+            except Exception:
+                self.Error.AddToLog("error", f"Failed to request '{Link}'")
 
         return False

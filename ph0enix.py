@@ -85,7 +85,7 @@ class Ph0enix:
 
 		return Matches
 
-	def PrintResults(self, SearchResults: dict = [], TotalLinkCount: int = 0) -> None:
+	def PrintResults(self, Username: str = None, SearchResults: dict = [], TotalLinkCount: int = 0) -> None:
 		FoundCount = 0
 
 		if(self.Validator.NotEmpty(SearchResults)):
@@ -94,6 +94,12 @@ class Ph0enix:
 		self.Cmd.Clear()
 
 		for MatchID, MatchLink in SearchResults.items():
+			if(self.Environment.Env["StoreResults"] == "true"):
+				self.Database.Insert(
+					Table="found_profiles",
+					Values=[self.Config.GenerateMD5(Username + self.Config.GenerateID()), MatchID, Username, MatchLink, self.Config.UnixTimestamp()]
+				)
+
 			print(f" | Website ID: {bc.GC}{MatchID}{bc.BC}")
 			print(f" | Website: {bc.GC}{self.Request.GetWebsiteName(MatchLink)}{bc.BC}")
 			print(f" | Location: {bc.GC}{MatchLink}{bc.BC}\n")
@@ -126,7 +132,7 @@ class Ph0enix:
 					WebsiteLinks = self.LoadLinks(Username)
 					SearchResults = self.StartSearch(Username, WebsiteLinks)
 
-					self.PrintResults(SearchResults, len(WebsiteLinks))
+					self.PrintResults(Username, SearchResults, len(WebsiteLinks))
 		else:
 			self.Cmd.Clear(self.Error.Throw("empty_command_stream_value"), False)
 		
