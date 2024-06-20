@@ -20,6 +20,7 @@ class ErrorHandler:
             "database_insert_none_type_table",
             "database_insert_invalid_table",
             "database_insert_missing_values",
+            "database_insert_execution_failure",
 
             "database_update_none_type_table",
             "database_update_invalid_table",
@@ -68,6 +69,8 @@ class ErrorHandler:
                 return f"\n{sd.eBan} Database.Insert.Error: table {bc.RC}{ErrorData}{bc.BC} does not exist\n"
             elif(ErrorType == "database_insert_missing_values"):
                 return f"\n{sd.eBan} Database.Insert.Error: insert values are required\n"
+            elif(ErrorType == "database_insert_execution_failure"):
+                return f"\n{sd.eBan} Database.Insert.Error: execution failed ({bc.RC}{ErrorData[0]}{bc.BC})\n{bc.RC}{ErrorData[1]}{bc.BC}\n\n"
             
             elif(ErrorType == "database_update_none_type_table"):
                 return f"\n{sd.eBan} Database.Update.Error: table name is NoneType\n"    
