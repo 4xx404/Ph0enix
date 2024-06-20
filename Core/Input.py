@@ -14,15 +14,33 @@ class InputManager:
         self.Error = ErrorHandler()
         self.Validator = Validation()
 
-    def SetUsername(self) -> (str | None):
-        Username = str(input(f"{bc.BC} Username:{bc.GC} "))
+        self.Commands = {
+            "database_manager": f"Use {bc.GC}database{bc.BC} to enter the database interface",
+        }
 
-        if(self.Validator.NotEmpty(Username)):
-            if(len(Username) >= 3):
-                return Username
+    def Help(self) -> None:
+        HelpCounter = 0
+
+        for Category, Description in self.Commands.items():
+            if("_" in Category):
+                CategoryPieces = Category.split("_")
+
+                Category, CategoryCounter = "", 0
+
+                for CategoryPiece in CategoryPieces:
+                    Category += CategoryPiece.capitalize()
+
+                    if(CategoryCounter < len(CategoryPieces) - 1):
+                        Category += " "
+                    
+                    CategoryCounter += 1
+                
             else:
-                self.Cmd.Clear(self.Error.Throw("username_length_too_short", Username), False)
-                self.SetUsername()
-        else:
-            self.Cmd.Clear(self.Error.Throw("empty_username_value", None), False)
-            self.SetUsername()
+                Category = Category.capitalize()
+                        
+            print(f" {bc.BC}{Category}\t{Description}")
+
+            if(HelpCounter == len(self.Commands.keys()) - 1):
+                print()
+
+            HelpCounter += 1

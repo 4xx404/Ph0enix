@@ -33,7 +33,7 @@ Be sure to put [USER] part inside the url to make the tool work properly.
 
  Authors: 4xx404			     https://github.com/4xx404
  Contributors: jcalabres		 https://github.com/jcalabres
- Version: 1.0
+ Version: 2.0
 
  [?] Matches may not always be specific to the user you are looking for.
  [?] For example, someone else could have used the same username elsewhere.
