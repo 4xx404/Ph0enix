@@ -1,3 +1,4 @@
-tld==0.11.11
-requests==2.32.2
 emojis==0.6.0
+python-dotenv==1.0.1
+Requests==2.32.3
+tld==0.11.11
