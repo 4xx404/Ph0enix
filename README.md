@@ -127,3 +127,6 @@ By default, matches found in the search will be stored in the database file in t
 
  ...
 ```
+
+### Disclaimer  
+See [Ph0enix Disclaimer](https://github.com/4xx404/Ph0enix/blob/master/DISCLAIMER.md)
